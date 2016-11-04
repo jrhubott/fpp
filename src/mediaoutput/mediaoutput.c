@@ -217,7 +217,7 @@ void CheckCurrentPositionAgainstMaster(void)
 		return;
 
 	// Allow faster sync in first 10 seconds
-	int maxDelta = (mediaOutputStatus.mediaSeconds < 10) ? 15 : 5;
+	int maxDelta = (mediaOutputStatus.mediaSeconds < 10) ? 5 : 1;
 	int desiredDelta = diff / -33;
 
 	if (desiredDelta > maxDelta)
