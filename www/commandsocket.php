@@ -2,7 +2,12 @@
 
 function CleanupSocket($path, $socket = '')
 {
-	@unlink($path);
+	if($path != '')
+	{
+		if (file_exists($path))
+			@unlink($path);
+	}
+		
 
 	if ($socket != '')
 		@socket_close($socket);
