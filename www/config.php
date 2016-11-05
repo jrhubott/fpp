@@ -16,7 +16,8 @@ if (file_exists("/etc/fpp/rfs_version"))
 // Allow overrides that we'll ignore from the git repository to make it
 // easier to develop on machines configured differently than our current
 // Pi image.
-@include('.config.php');
+if(file_exists('.config.php'))
+	include('.config.php');
 
 // Settings array so we can stop making individual variables for each new setting
 $settings = array();
