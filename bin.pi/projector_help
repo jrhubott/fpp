@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+
+from pyjector import Pyjector
+
+# Look up what port your projector is connected to, using something
+# like `dmesg` if you're on linux.
+port = '/dev/ttyUSB0'
+
+# The only valid device id at the moment is `benq`. This is used
+# to figure out what commands are supported, and the format needed.
+device_id = 'benq'
+
+pyjector = Pyjector(port=port, device_id=device_id,baudrate=115200)
+
+# Let's check what commands claim to be supported by our device.
+print(pyjector.command_list)
+
+# Let's check the actions associated with each command
+print(pyjector.command_spec)
+
+print(pyjector.model_name('status'))
+
+status = pyjector.power('status')
+
+print(status)
+
+if ('ON' in status):
+	print('ON')
+else:
+	print('OFF')
+
